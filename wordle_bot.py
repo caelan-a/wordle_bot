@@ -12,6 +12,10 @@ from termcolor import colored, cprint
 import itertools
 import multiprocessing as mp
 
+MAX_WORD_LIST_LENGTH = 200
+N_MAX_TRIES = 5
+INITIAL_GUESS = "slate" # Word to initially guess. Keep blank for initial entropy calculation. '?' for random 
+
 DOESNT_CONTAIN_LETTER = "0"
 CONTAINS_LETTER_AT_POSITION = "G"
 CONTAINS_LETTER = "Y"
@@ -87,7 +91,11 @@ def compareWords(guess,target):
 def getWords():
     f = open("wordle_data/possible_words.txt", "r")
     words = f.read().splitlines()
-    return words
+
+    if(len(words) > MAX_WORD_LIST_LENGTH):
+        return words[:MAX_WORD_LIST_LENGTH]
+    else:
+        return words
 
 def getProbability(remaining_words, all_words):
     return len(remaining_words)/len(all_words)
@@ -165,9 +173,6 @@ def getBestGuessInParallel(possible_words):
     return best_guess, max_entropy
 
 if __name__ == '__main__':
-    N_MAX_TRIES = 5
-    CHOOSE_RANDOM_INITIAL_GUESS = True
-
     remaining_possible_words = getWords()
     words_tried = []
     print(f"\nWordle Bot v1.0")
@@ -182,9 +187,13 @@ if __name__ == '__main__':
 
         print(f"Words tried: {words_tried}")
        
-        if(CHOOSE_RANDOM_INITIAL_GUESS and i == 1):
-            guess = "slate"
-            print(f"Random initial guess: {guess}")
+        if(INITIAL_GUESS != "" and  i == 1):
+            if INITIAL_GUESS == "?":
+                guess = choice(remaining_possible_words)
+                print(f"Random initial guess: {guess}")
+            else:
+                guess = INITIAL_GUESS
+                print(f"Chosen initial guess: {guess}")
         else:
             guess, entropy = getBestGuessInParallel(remaining_possible_words)
 
