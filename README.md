@@ -13,7 +13,7 @@ Run simulation
 python wordle_bot.py
 ```
 
-[Example simulation](example.PNG)
+[Example simulation](https://raw.githubusercontent.com/caelan-a/wordle_bot/main/example.PNG)
 
 ## Multiprocessing
 This project uses the `multiprocessing` module shipped with the python interpreter for distributed calculations.
