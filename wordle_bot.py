@@ -12,9 +12,9 @@ from termcolor import colored, cprint
 import itertools
 import multiprocessing as mp
 
-MAX_WORD_LIST_LENGTH = 200
+MAX_WORD_LIST_LENGTH = 2500
 N_MAX_TRIES = 5
-INITIAL_GUESS = "slate" # Word to initially guess. Keep blank for initial entropy calculation. '?' for random 
+INITIAL_GUESS = "adieu" # Word to initially guess. Keep blank for initial entropy calculation. '?' for random 
 
 DOESNT_CONTAIN_LETTER = "0"
 CONTAINS_LETTER_AT_POSITION = "G"

@@ -13,6 +13,8 @@ Run simulation
 python wordle_bot.py
 ```
 
+![alt text](https://github.com/caelan-a/wordle_bot/blob/master/example.PNG?raw=true)
+
 ## Multiprocessing
 This project uses the `multiprocessing` module shipped with the python interpreter for distributed calculations.
 Can see the effect of multiprocessing on a test function in `multiprocessing_test.py`
